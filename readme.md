@@ -23,6 +23,6 @@ INSTRUCTIONS
 
 RESOURCES
        
-       - man printf va_arg va_start va_end
+       man printf va_arg va_start va_end
        https://www.tutorialspoint.com/c_standard_library/c_macro_va_arg.htm
 
