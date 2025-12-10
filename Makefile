@@ -1,39 +1,44 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/10/27 20:31:57 by mromao-s          #+#    #+#              #
+#    Updated: 2025/11/24 21:34:03 by mromao-s         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
 RM = rm -f
 
-FILES = ft_printf
+SRCS = ft_printf.c utils/utils.c
 
-SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
-SRCS_B = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_B)))
-
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
-OBJS_B = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_B)))
-
-
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+OBJS=$(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^
+	$(AR) $(NAME) $(OBJS)
 
-run: 
-	$(CC) $(CFLAGS) $(NAME) -o oQueSaiuDaCena
-	./oQueSaiuDaCena
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
+run:
+	@$(CC) $(CFLAGS) $(NAME) -o main
+	@./main
+
 clean:
-	$(RM) $(OBJS) $(OBJS_B)
+	$(RM) $(OBJS) 
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: bonus all clean fclean re
+.PHONY: all clean fclean re
