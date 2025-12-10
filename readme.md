@@ -3,6 +3,7 @@ This project has been created as part of the 42 curriculum by mromao-s
 
 DESCRIPTION\
        Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:
+       
        %%     a single %
        %s     string
        %c     char
